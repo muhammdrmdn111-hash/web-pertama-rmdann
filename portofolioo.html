@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Portofolio — muhammad ramadhan</title>
+
+  <meta name="description" content="Portofolio pribadi Nama Anda.">
+
+  <style>
+    :root{
+      --bg:#0b1020;
+      --card:#121a2d;
+      --text:#eef2ff;
+      --muted:#aab4cc;
+      --accent:#7c5cff;
+      --accent2:#19c3ff;
+      --border:rgba(255,255,255,.1);
+    }
+
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+      background:
+        radial-gradient(circle at 80% 10%,rgba(124,92,255,.22),transparent 28%),
+        radial-gradient(circle at 10% 30%,rgba(25,195,255,.12),transparent 25%),
+        var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .container{
+      width:min(1100px,92%);
+      margin:auto;
+    }
+
+    /* NAVBAR */
+    nav{
+      position:sticky;
+      top:0;
+      z-index:10;
+      background:rgba(11,16,32,.75);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid var(--border);
+    }
+
+    .nav-inner{
+      height:70px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+    }
+
+    .logo{
+      font-weight:800;
+      font-size:1.25rem;
+    }
+
+    .logo span{
+      color:var(--accent);
+    }
+
+    .links{
+      display:flex;
+      gap:24px;
+      color:var(--muted);
+    }
+
+    .links a{
+      transition:.3s;
+    }
+
+    .links a:hover{
+      color:white;
+    }
+
+    /* HERO */
+    .hero{
+      min-height:calc(100vh - 70px);
+      display:grid;
+      place-items:center;
+      padding:70px 0;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.25fr .75fr;
+      gap:50px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      color:#bcaeff;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+
+    h1{
+      font-size:clamp(2.8rem,7vw,5.5rem);
+      line-height:1.02;
+      letter-spacing:-.05em;
+    }
+
+    h1 span{
+      background:linear-gradient(
+        90deg,
+        var(--accent),
+        var(--accent2)
+      );
+
+      -webkit-background-clip:text;
+      color:transparent;
+    }
+
+    .lead{
+      font-size:1.15rem;
+      color:var(--muted);
+      max-width:650px;
+      margin:24px 0;
+    }
+
+    .buttons{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:12px 20px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      font-weight:700;
+      transition:.3s;
+    }
+
+    .btn.primary{
+      background:linear-gradient(
+        90deg,
+        var(--accent),
+        #5f8cff
+      );
+      border:0;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+      box-shadow:0 10px 30px rgba(124,92,255,.25);
+    }
+
+    /* FOTO PROFIL */
+    .profile{
+      width:min(320px,80vw);
+      aspect-ratio:1;
+      border-radius:32px;
+      background:
+        linear-gradient(
+          145deg,
+          #1c2744,
+          #101629
+        );
+      border:1px solid var(--border);
+      display:grid;
+      place-items:center;
+      box-shadow:
+        0 30px 80px rgba(0,0,0,.3),
+        0 0 50px rgba(124,92,255,.15);
+
+      position:relative;
+      overflow:hidden;
+
+      animation:
+        floating 4s ease-in-out infinite;
+    }
+
+    .profile::before{
+      content:"";
+      position:absolute;
+      width:180px;
+      height:180px;
+      background:var(--accent);
+      filter:blur(90px);
+      opacity:.35;
+    }
+
+    .profile img{
+      width:82%;
+      height:82%;
+      object-fit:cover;
+      border-radius:28px;
+
+      border:4px solid rgba(255,255,255,.12);
+
+      position:relative;
+      z-index:2;
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,.5);
+
+      transition:.5s;
+    }
+
+    .profile img:hover{
+      transform:scale(1.05);
+    }
+
+    @keyframes floating{
+      0%,100%{
+        transform:translateY(0);
+      }
+
+      50%{
+        transform:translateY(-12px);
+      }
+    }
+
+    /* SECTION */
+    section{
+      padding:90px 0;
+    }
+
+    .section-title{
+      font-size:2.2rem;
+      margin-bottom:12px;
+    }
+
+    .section-sub{
+      color:var(--muted);
+      margin-bottom:32px;
+    }
+
+    /* CARD */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:rgba(18,26,45,.82);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:24px;
+
+      transition:.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      border-color:rgba(124,92,255,.5);
+      box-shadow:0 15px 40px rgba(0,0,0,.25);
+    }
+
+    .card h3{
+      margin-bottom:8px;
+    }
+
+    .card p{
+      color:var(--muted);
+    }
+
+    /* PROJECT */
+    .project{
+      min-height:220px;
+      display:flex;
+      flex-direction:column;
+      justify-content:flex-end;
+
+      background:
+        linear-gradient(
+          180deg,
+          transparent,
+          rgba(0,0,0,.65)
+        ),
+        linear-gradient(
+          135deg,
+          #263c74,
+          #161d36
+        );
+    }
+
+    .tag{
+      display:inline-block;
+      margin:8px 4px 0 0;
+      padding:5px 9px;
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      font-size:.8rem;
+      color:#d8def0;
+    }
+
+    /* KONTAK */
+    .contact{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    /* FOOTER */
+    footer{
+      padding:30px 0;
+      border-top:1px solid var(--border);
+      color:var(--muted);
+      text-align:center;
+    }
+
+    /* MOBILE */
+    @media(max-width:800px){
+
+      .hero-grid,
+      .contact{
+        grid-template-columns:1fr;
+      }
+
+      .profile{
+        margin:auto;
+      }
+
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      .links{
+        display:none;
+      }
+
+      h1{
+        font-size:3rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="container nav-inner">
+
+      <a class="logo" href="#">
+        Portofolio<span>.</span>
+      </a>
+
+      <div class="links">
+        <a href="#tentang">Tentang</a>
+        <a href="#keahlian">Keahlian</a>
+        <a href="#proyek">Proyek</a>
+        <a href="#kontak">Kontak</a>
+      </div>
+
+    </div>
+  </nav>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="container hero-grid">
+
+        <div>
+
+          <div class="eyebrow">
+            PORTOFOLIO PRIBADI
+          </div>
+
+          <h1>
+            Halo, saya
+            <span>Muhammad ramadhan.</span>
+          </h1>
+
+          <p class="lead">
+            Saya seorang pelajar, kreator, dan pengembang
+            yang suka membuat proyek digital yang sederhana,
+            modern, dan bermanfaat.
+          </p>
+
+          <div class="buttons">
+
+            <a class="btn primary" href="#proyek">
+              Lihat Proyek
+            </a>
+
+            <a class="btn" href="#kontak">
+              Hubungi Saya
+            </a>
+
+          </div>
+
+        </div>
+
+
+        <!-- FOTO -->
+        <div class="profile">
+
+          <!--
+          GANTI "foto.jpg" DENGAN NAMA FILE FOTO KAMU
+          -->
+
+          <img
+            src="madan.jpg"
+            alt="Foto Profil Nama Anda"
+          >
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- TENTANG -->
+    <section id="tentang">
+
+      <div class="container">
+
+        <h2 class="section-title">
+          Tentang Saya
+        </h2>
+
+        <p class="section-sub">
+          Sedikit tentang diri saya dan apa yang saya kerjakan.
+        </p>
+
+        <div class="card">
+
+          <p>
+            Saya tertarik pada teknologi, desain,
+            dan pengembangan website. Saya senang
+            mempelajari hal-hal baru dan membuat
+            proyek digital yang kreatif dan bermanfaat.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- KEAHLIAN -->
+    <section id="keahlian">
+
+      <div class="container">
+
+        <h2 class="section-title">
+          Keahlian
+        </h2>
+
+        <p class="section-sub">
+          Teknologi dan kemampuan yang saya gunakan.
+        </p>
+
+        <div class="grid">
+
+          <div class="card">
+
+            <h3>
+              Web Development
+            </h3>
+
+            <p>
+              HTML, CSS, JavaScript,
+              dan pembuatan website responsif.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              UI / UX
+            </h3>
+
+            <p>
+              Membuat tampilan yang bersih,
+              modern, dan nyaman digunakan.
+            </p>
+
+          </div>
+
+
+          <div class="card">
+
+            <h3>
+              Creative
+            </h3>
+
+            <p>
+              Desain konten, presentasi,
+              dan ide kreatif untuk kebutuhan digital.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PROYEK -->
+    <section id="proyek">
+
+      <div class="container">
+
+        <h2 class="section-title">
+          Proyek
+        </h2>
+
+        <p class="section-sub">
+          Beberapa proyek yang pernah saya kerjakan.
+        </p>
+
+        <div class="grid">
+
+
+          <article class="card project">
+
+            <div>
+
+              <h3>
+                Website Sekolah
+              </h3>
+
+              <p>
+                Website informasi sekolah
+                dengan desain responsif.
+              </p>
+
+              <span class="tag">
+                HTML
+              </span>
+
+              <span class="tag">
+                CSS
+              </span>
+
+              <span class="tag">
+                JS
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <article class="card project">
+
+            <div>
+
+              <h3>
+                Aplikasi Kasir
+              </h3>
+
+              <p>
+                Aplikasi sederhana untuk
+                mencatat transaksi dan produk.
+              </p>
+
+              <span class="tag">
+                Web App
+              </span>
+
+              <span class="tag">
+                JavaScript
+              </span>
+
+            </div>
+
+          </article>
+
+
+          <article class="card project">
+
+            <div>
+
+              <h3>
+                Landing Page
+              </h3>
+
+              <p>
+                Halaman promosi produk
+                dengan tampilan modern.
+              </p>
+
+              <span class="tag">
+                UI
+              </span>
+
+              <span class="tag">
+                Responsive
+              </span>
+
+            </div>
+
+          </article>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- KONTAK -->
+    <section id="kontak">
+
+      <div class="container">
+
+        <h2 class="section-title">
+          Mari Terhubung
+        </h2>
+
+        <p class="section-sub">
+          Hubungi saya melalui kontak berikut.
+        </p>
+
+        <div class="contact">
+
+
+          <a
+            class="card"
+            href="mailto:emailanda@example.com"
+          >
+
+            <h3>
+              Email
+            </h3>
+
+            <p>
+              muhammadrmdan11@example.com
+            </p>
+
+          </a>
+
+
+          <a
+            class="card"
+            href="https://github.com/"
+            target="_blank"
+          >
+
+            <h3>
+              GitHub
+            </h3>
+
+            <p>
+              github.com/username
+            </p>
+
+          </a>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    © 2026 Nama Anda.
+    Dibuat dengan HTML & CSS.
+
+  </footer>
+
+
+</body>
+</html>
